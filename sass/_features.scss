@@ -1,0 +1,41 @@
+.features {
+
+    margin: 15rem 0;
+
+    grid-column: center-start / center-end;
+
+    display: grid;
+    align-items: start;
+
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 6rem;
+
+}
+
+.feature {
+
+    display: grid;
+
+    grid-template-columns: min-content 1fr;
+
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 1.5rem;
+    
+
+    &__icon {
+        height: 4.5rem;
+        width: 4.5rem;
+        fill: $color-primary;
+
+        //the -1 means the end of the EXPLICIT grid, not the grid
+        grid-row: 1 / span 2;
+
+        transform: translateY(-1rem);
+
+    }
+
+    &__text {
+        font-size: 1.7rem;
+
+    }
+}

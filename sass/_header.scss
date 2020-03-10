@@ -1,0 +1,79 @@
+.header {
+    background-color: $color-grey-dark-1;
+    grid-column: full-start / col-end 6;
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: full-start / -1;
+    }
+
+    background-image: linear-gradient(to right bottom, rgba($color-secondary, .9), rgba($color-secondary, .8)), url(../img/hero.jpeg);
+    background-size: cover;
+    background-position: center;
+
+    padding: 8rem;
+    padding-top: 4rem;
+
+    display: grid;
+
+    //you can use fractional units (1fr for example) to push all remaining content in a certain direction
+    //but this only works because the grid container has a well defined viewport height
+
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    grid-template-columns: minmax(min-content, max-content);
+    grid-row-gap: 1.5rem;
+
+    justify-content: center;
+
+    &__logo {
+        height: 3rem;
+        justify-self: center;
+    }
+
+    &__btn {
+        justify-self: start;
+        align-self: start;
+    }
+
+    &__seenon-text {
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        align-items: center;
+        grid-column-gap: 1rem;
+
+        font-size: 1.6rem;
+        color: $color-grey-light-2;
+        padding: 1rem 2rem;
+        
+        //even text can be a grid item in the same way it can be a flex item
+        //the lines are a ::before and ::after pseudo element
+        &::before,
+        &::after {
+            content: "";
+            height: 1px;
+            display: block;
+            background-color: currentColor;
+
+            //as independenyl derived, can also use border-bottom without height or display: block;
+        }
+    }
+
+    &__seenon-logos {
+        
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem;
+
+        justify-items: center;
+        align-items: center;
+
+        //sometimes with a deeply nested img tag, its better to nest the img selector in sass than to give it a class name
+        img {
+            //in a case like this the images should all have the same height, otherwise they'd look weird side by side
+            //for full responsive design, specify height as MAX height
+            max-height: 2.5rem;
+            //when specifying max height, max WIDTH must also be specified
+            max-width: 100%;
+            //filter: brightness(70%);
+        }
+    }
+}

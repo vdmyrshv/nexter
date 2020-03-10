@@ -1,0 +1,88 @@
+.story{
+
+    &__pictures {
+        grid-column: col-start 1 / col-end 4;
+
+        background-image: linear-gradient(to right bottom, rgba($color-primary-dark, 0.5), rgba($color-primary, 0.5)), url(../img/back.jpg);
+        background-size: cover;
+        background-position: left;
+
+        display: grid;
+        grid-template-columns: repeat(6, [col-start] 1fr [col-end]);
+        grid-template-rows: repeat(6, [row-start] 1fr [row-end]);
+
+
+        //images behave differently, as they do not automatically stretch to the size of the grid areas, 
+        //because they have their own intrinsic aspect ratio
+        //to truly center an image use align items
+
+        align-items: center;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: 1 / -1;
+            padding: 0 3rem;
+        }
+    }
+
+    &__img--1 {
+        //always specify width of img, and do it in percentages so they stay flexible
+        width: 100%;
+
+        
+        grid-column: col-start 2 / span 4;
+        grid-row: row-start 2/ span 4;
+        
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+        
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: 1 / 5;
+            grid-row: 1 / -1;
+        }
+    }
+
+    &__img--2 {
+        //always specify width of img, and do it in percentages so they stay flexible
+        width: 115%;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: 4 / 9;
+            grid-row: 3 / 5;
+            width: 100%;
+        }
+
+        z-index: 100;
+
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+        grid-column: col-start 4 / span 3;
+        grid-row: row-start 4 / span 3;
+
+        align-self: start;
+    }
+
+    &__content {
+
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+        align-items: flex-start;
+
+        background-color: $color-grey-light-1;
+
+        //PADDING CAN ALSO BE SET AS A PERCENTAGE OF VIEWPORT WIDTH
+        padding: 6rem 8vw;
+
+        grid-column: col-start 5 / col-end 8;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-column: 1 / -1;
+            grid-row: 5 / 6;
+        }
+
+    }
+
+    &__text {
+        font-size: 1.5rem;
+        font-style: italic;
+    }
+}
